@@ -17,7 +17,7 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new user
-    const newUser = new User({ username,email, password: hashedPassword, role });
+    const newUser = new User({ username, email, password: hashedPassword, role });
 
     // Save user to the database
     await newUser.save();
@@ -64,3 +64,4 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Error logging in', error: error.message });
   }
 };
+

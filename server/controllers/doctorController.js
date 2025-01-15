@@ -1,7 +1,3 @@
-// controllers/doctorController.js
-// import User from "../models/User.js"; // Use the User model directly
-// import Doctor from "../models/Doctor.js";
-
 export async function getDoctors(req, res) {
   try {
     const doctors = await User.find({ role: "doctor" }); // Query users with the role 'doctor'

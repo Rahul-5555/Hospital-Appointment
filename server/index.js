@@ -11,15 +11,20 @@ import Doctor from './models/doctor.js';
 
 dotenv.config();
 const app = express();
-app.get('/api/doctors', async (req, res) => {
-  try {
-    const doctors = await Doctor.find(); // Fetch all doctors from MongoDB
-    res.status(200).json(doctors);
-  } catch (error) {
-    console.error('Error fetching doctors:', error);
-    res.status(500).json({ message: 'Failed to fetch doctors' });
-  }
-});
+// app.get('/api/doctors', async (req, res) => {
+//   try {
+//     const doctors = await Doctor.find(); // Fetch all doctors from MongoDB
+//     if (doctors.length === 0) {
+//       return res.status(200).json({
+//         message: "No doctor found"
+//       })
+//     }
+//     res.status(200).json(doctors);
+//   } catch (error) {
+//     console.error('Error fetching doctors:', error);
+//     res.status(500).json({ message: 'Failed to fetch doctors' });
+//   }
+// });
 
 // Middleware
 app.use(cors());

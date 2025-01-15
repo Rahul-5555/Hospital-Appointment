@@ -1,8 +1,21 @@
-const mongoose = require('mongoose');
+// models/Appointment.js
+import { Schema, model } from "mongoose";
 
-const appointmentSchema = new mongoose.Schema({
-  doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  appointmentDate: { type: Date, required: true }
+const appointmentSchema = new Schema({
+  doctorId: {
+    type: Schema.Types.ObjectId,
+    ref: "Doctor", // Assuming you have a Doctor model
+    required: true,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model('Appointment', appointmentSchema);
+export default model("Appointment", appointmentSchema);
+
