@@ -9,13 +9,19 @@ const appointmentSchema = new Schema({
   },
   username: {
     type: String,
-    required: true,
   },
   date: {
     type: Date,
+    
+  },
+  from: {
+    type: String, // Example: "10:00 AM"
+    required: true,
+  },
+  to: {
+    type: String, // Example: "11:00 AM"
     required: true,
   },
 });
 
 export default model("Appointment", appointmentSchema);
-

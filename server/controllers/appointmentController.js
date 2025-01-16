@@ -1,10 +1,13 @@
-// Corrected code
-
 import Appointment from "../models/Appointment.js";
 
 export async function getAppointments(req, res) {
-  const appointments = await Appointment.find({}).populate("doctorId");  // Assuming `find()` is a method from your Appointment model
-  res.json(appointments);
+  try {
+    const appointments = await Appointment.find({})
+      .populate("doctorId", "username"); // Populate doctorId with username
+    res.json(appointments);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to load appointments" });
+  }
 }
 
 export async function bookAppointment(req, res) {
@@ -15,6 +18,6 @@ export async function bookAppointment(req, res) {
 }
 
 export async function cancelAppointment(req, res) {
-  await Appointment.findByIdAndDelete(req.params.id);  // Assuming this is a method from your Appointment model
-  res.json({ message: 'Appointment canceled' });
+  await Appointment.findByIdAndDelete(req.params.id);
+  res.json({ message: "Appointment canceled" });
 }

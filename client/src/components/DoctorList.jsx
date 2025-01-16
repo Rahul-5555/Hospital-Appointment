@@ -79,7 +79,7 @@ const DoctorList = () => {
               onClick={() => handleOpenModal(doctor)}
               className="text-blue-500 hover:underline"
             >
-              Book Appointment
+              {/* Book Appointment */}
             </button>
           </div>
         ))}
